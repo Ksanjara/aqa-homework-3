@@ -8,8 +8,9 @@ public class FillFormTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
-    void fillFullForm(){
+    void fillFullFormTest(){
         registrationPage.openPage()
+                        .removeBanners()
                         .setFirstName("Victoriia")
                         .setLastName("Mansurova")
                         .setEmail("super@email.ru")
@@ -38,8 +39,9 @@ public class FillFormTests extends TestBase {
     }
 
     @Test
-    void fillRequiredOnly(){
+    void fillRequiredOnlyTest(){
         registrationPage.openPage()
+                .removeBanners()
                 .setFirstName("Ivan")
                 .setLastName("Abramov")
                 .setGender("Male")
@@ -54,8 +56,9 @@ public class FillFormTests extends TestBase {
     }
 
     @Test
-    void incorrectUserNumber(){
+    void incorrectUserNumberTest(){
         registrationPage.openPage()
+                .removeBanners()
                 .setFirstName("Essa")
                 .setLastName("Kuznetsova")
                 .setGender("Other")
@@ -63,7 +66,7 @@ public class FillFormTests extends TestBase {
                 .setDateOfBirth("15", "December", "2005")
                 .submitForm();
 
-        registrationPage.checkResultIsNotVisible();
+        registrationPage.checkNoResults();
     }
 }
 
