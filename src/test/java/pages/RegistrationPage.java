@@ -2,9 +2,9 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.ResultsTableComponent;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -23,15 +23,21 @@ import static com.codeborne.selenide.Selenide.*;
                 stateInput = $("#state"),
                 cityInput = $("#city"),
                 submitButton = $("#submit"),
-                resultTable = $(".table-responsive"),
-                resultTitle = $("#example-modal-sizes-title-lg");
+                resultTitle = $("#example-modal-sizes-title-lg"),
+                formTitle = $(".practice-form-wrapper");
 
         CalendarComponent calendarComponent = new CalendarComponent();
+        ResultsTableComponent resultsTableComponent = new ResultsTableComponent();
 
         //Page methods
         public RegistrationPage openPage() {
             open("/automation-practice-form");
-            $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+            formTitle.shouldHave(text("Student Registration Form"));
+
+            return this;
+        }
+
+        public RegistrationPage removeBanners(){
             executeJavaScript("$('#fixedban').remove()");
             executeJavaScript("$('footer').remove()");
 
@@ -120,14 +126,14 @@ import static com.codeborne.selenide.Selenide.*;
         }
 
         public RegistrationPage checkResult(String key, String value) {
-            resultTable.$(byText(key)).parent()
-                    .shouldHave(text(value));
+            resultsTableComponent.checkResults(key, value);
 
             return this;
         }
 
-        public RegistrationPage checkResultIsNotVisible(){
-            resultTitle.shouldNotBe(visible);
+        public RegistrationPage checkNoResults(){
+            resultsTableComponent.checkResultIsNotVisible();
+
 
             return this;
         }
