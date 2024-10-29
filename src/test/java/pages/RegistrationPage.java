@@ -32,8 +32,6 @@ import static com.codeborne.selenide.Selenide.*;
         CalendarComponent calendarComponent = new CalendarComponent();
         ResultsTableComponent resultsTableComponent = new ResultsTableComponent();
 
-        //Page data
-
         //Page methods
         public RegistrationPage openPage() {
             open("/automation-practice-form");
