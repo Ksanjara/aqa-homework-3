@@ -10,6 +10,8 @@ import static com.codeborne.selenide.Selenide.*;
 
 
     public class RegistrationPage {
+
+        //Page elements
         private SelenideElement firstNameInput = $("#firstName"),
                 lastNameInput = $("#lastName"),
                 userEmailInput = $("#userEmail"),
@@ -26,8 +28,11 @@ import static com.codeborne.selenide.Selenide.*;
                 resultTitle = $("#example-modal-sizes-title-lg"),
                 formTitle = $(".practice-form-wrapper");
 
+        //Page components
         CalendarComponent calendarComponent = new CalendarComponent();
         ResultsTableComponent resultsTableComponent = new ResultsTableComponent();
+
+        //Page data
 
         //Page methods
         public RegistrationPage openPage() {
