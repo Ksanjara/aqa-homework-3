@@ -12,6 +12,7 @@ public class FillFormTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
 
+    //tests data
     Faker faker = new Faker(new Locale("en"));
 
     String firstName = faker.name().firstName();
@@ -23,7 +24,6 @@ public class FillFormTests extends TestBase {
     String streetAddress = faker.address().streetAddress();
     String birthdayDay = String.valueOf(getRandomInt(5, 25));
     String birthdayMonth = getRandomMonth();
-
     String birthdayYear = String.valueOf(getRandomBirthYear());
     String userSubject = getRandomSubject();
     String userInterest = getRandomHobbie();
