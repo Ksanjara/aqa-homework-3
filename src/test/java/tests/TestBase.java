@@ -2,8 +2,11 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
+import pages.RegistrationPage;
 
 public class TestBase {
+    TestData testData = new TestData();
+    RegistrationPage registrationPage = new RegistrationPage();
 
     @BeforeAll
     static void preconditionsForAllTests() {

@@ -1,6 +1,6 @@
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         byte myByte = 120;
         short myShort = -32128;
         float myFloat = 2.012F;
@@ -10,25 +10,25 @@ public class Main {
         boolean isSkyBlue = true;
         boolean isSkyGray = false;
 
-        System.out.println("Умножение разных типов: " + (myByte*myShort*myInt*myFloat)*myInt);
+        System.out.println("Умножение разных типов: " + (myByte * myShort * myInt * myFloat) * myInt);
 
-        System.out.println("Деление: "+ myInt/myDouble);
+        System.out.println("Деление: " + myInt / myDouble);
 
-        System.out.println("Вычитание: " + (myFloat-myShort));
+        System.out.println("Вычитание: " + (myFloat - myShort));
 
-        System.out.println("Сложение: " + (myDouble+myByte));
+        System.out.println("Сложение: " + (myDouble + myByte));
 
-        System.out.println("Сравнение: " + myDouble + ">" + myFloat + "=" + (myDouble>myFloat));
-        System.out.println("Сравнение: " + myDouble + "<" + myFloat + "=" + (myDouble<myFloat));
-        System.out.println("Сравнение: " + myDouble + "!=" + myFloat + "=" + (myDouble!=myFloat));
-        System.out.println("Сравнение: " + myDouble + "==" + myFloat + "=" + (myDouble==myFloat));
-        System.out.println("Сравнение: " + myDouble + ">=" + myFloat + "=" + (myDouble>=myFloat));
+        System.out.println("Сравнение: " + myDouble + ">" + myFloat + "=" + (myDouble > myFloat));
+        System.out.println("Сравнение: " + myDouble + "<" + myFloat + "=" + (myDouble < myFloat));
+        System.out.println("Сравнение: " + myDouble + "!=" + myFloat + "=" + (myDouble != myFloat));
+        System.out.println("Сравнение: " + myDouble + "==" + myFloat + "=" + (myDouble == myFloat));
+        System.out.println("Сравнение: " + myDouble + ">=" + myFloat + "=" + (myDouble >= myFloat));
 
         System.out.println("Логичеcкое вычиcление ||: " + (isSkyGray || isSkyBlue));
         System.out.println("Логичеcкое вычиcление &&: " + (isSkyGray && isSkyBlue));
         System.out.println("Логичеcкое вычиcление !: " + (!isSkyBlue));
 
 
-        System.out.println("Переполнение: " + myBigInt*myInt);
+        System.out.println("Переполнение: " + myBigInt * myInt);
     }
 }
