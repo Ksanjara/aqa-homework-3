@@ -6,6 +6,7 @@ import pages.TextBoxPage;
 public class TextBoxTest extends TestBase {
 
     TextBoxPage textBoxPage = new TextBoxPage();
+
     @Test
     void fillFormTest() {
         textBoxPage.openPage()
@@ -15,6 +16,6 @@ public class TextBoxTest extends TestBase {
                 .setPermanentAddress("My address is not house and is not street")
                 .submitForm();
 
-        textBoxPage.checkResult("Kseniia", "my@email.ru", "My address now this","My address is not house and is not street" );
+        textBoxPage.checkResult("Kseniia", "my@email.ru", "My address now this", "My address is not house and is not street");
     }
 }
