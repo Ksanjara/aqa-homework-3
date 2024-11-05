@@ -2,9 +2,11 @@ package tests;
 
 import com.github.javafaker.Faker;
 
+import java.time.LocalDate;
 import java.util.Locale;
 
-import static utils.RandomUtils.*;
+import static utils.RandomUtils.getBirthDay;
+import static utils.RandomUtils.getRandomCityByState;
 
 public class TestData {
 
@@ -17,10 +19,7 @@ public class TestData {
     String userNumber = faker.phoneNumber().subscriberNumber(10);
     String shortUserNumber = faker.phoneNumber().subscriberNumber(9);
     String streetAddress = faker.address().streetAddress();
-    String birthdayDay = getBirthDay();
-    String birthdayMonth = faker.options().option("January", "February", "March", "April",
-            "May", "June", "July", "August", "September", "November", "December");
-    String birthdayYear = String.valueOf(getRandomBirthYear());
+    LocalDate birthdayDay = getBirthDay(14, 35);
     String userSubject = faker.options().option("Accounting", "Maths", "Arts", "Social Studies", "Chemistry", "Computer Science", "Commerce", "Physics", "Economics");
     String userInterest = faker.options().option("Sports", "Reading", "Music");
     String picturePath = "Google_Test_passed.png";
