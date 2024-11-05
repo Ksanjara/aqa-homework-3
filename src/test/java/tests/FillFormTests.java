@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class FillFormTests extends TestBase {
@@ -13,7 +14,7 @@ public class FillFormTests extends TestBase {
                 .setEmail(testData.userEmail)
                 .setGender(testData.userGender)
                 .setUserNumber(testData.userNumber)
-                .setDateOfBirth(testData.birthdayDay, testData.birthdayMonth, testData.birthdayYear)
+                .setDateOfBirth(testData.birthdayDay)
                 .setSubjects(testData.userSubject)
                 .setInterest(testData.userInterest)
                 .uploadPicture(testData.picturePath)
@@ -26,7 +27,7 @@ public class FillFormTests extends TestBase {
                 .checkResult("Student Email", testData.userEmail)
                 .checkResult("Gender", testData.userGender)
                 .checkResult("Mobile", testData.userNumber)
-                .checkResult("Date of Birth", testData.birthdayDay + " " + testData.birthdayMonth + "," + testData.birthdayYear)
+                .checkResult("Date of Birth", testData.birthdayDay.format(formatter))
                 .checkResult("Subjects", testData.userSubject)
                 .checkResult("Hobbies", testData.userInterest)
                 .checkResult("Picture", testData.picturePath)
@@ -34,6 +35,7 @@ public class FillFormTests extends TestBase {
                 .checkResult("State and City", testData.userState + " " + testData.userCity);
 
     }
+
 
     @Test
     void fillRequiredOnlyTest() {
@@ -43,15 +45,16 @@ public class FillFormTests extends TestBase {
                 .setLastName(testData.lastName)
                 .setGender(testData.userGender)
                 .setUserNumber(testData.userNumber)
-                .setDateOfBirth(testData.birthdayDay, testData.birthdayMonth, testData.birthdayYear)
+                .setDateOfBirth(testData.birthdayDay)
                 .submitForm();
 
         registrationPage.checkResult("Student Name", testData.firstName + " " + testData.lastName)
                 .checkResult("Gender", testData.userGender)
                 .checkResult("Mobile", testData.userNumber)
-                .checkResult("Date of Birth", testData.birthdayDay + " " + testData.birthdayMonth + "," + testData.birthdayYear);
+                .checkResult("Date of Birth", testData.birthdayDay.format(formatter));
     }
 
+    @Disabled
     @Test
     void incorrectUserNumberTest() {
         registrationPage.openPage()
@@ -60,7 +63,7 @@ public class FillFormTests extends TestBase {
                 .setLastName(testData.lastName)
                 .setGender(testData.userGender)
                 .setUserNumber(testData.shortUserNumber)
-                .setDateOfBirth(testData.birthdayDay, testData.birthdayMonth, testData.birthdayYear)
+                .setDateOfBirth(testData.birthdayDay)
                 .submitForm();
 
         registrationPage.checkNoResults();

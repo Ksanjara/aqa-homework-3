@@ -4,7 +4,10 @@ import com.github.javafaker.Faker;
 
 import java.security.SecureRandom;
 import java.time.LocalDate;
-import java.util.*;
+import java.time.ZoneId;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomUtils {
@@ -40,52 +43,11 @@ public class RandomUtils {
                 getRandomInt(111, 999), getRandomInt(11, 99), getRandomInt(11, 99));
     }
 
-    public static String getRandomGender() {
-        String[] genders = {"Male", "Female", "Other"};
-
-        return getRandomItemFromArray(genders);
-    }
 
     public static String getRandomItemFromArray(String[] array) {
         int index = getRandomInt(0, array.length - 1);
 
         return array[index];
-    }
-
-    public static String getRandomSubject() {
-        String[] subjects = {"Accounting", "Maths", "Arts", "Social Studies",
-                "Chemistry", "Computer Science", "Commerce",
-                "Physics", "Economics"};
-
-        return getRandomItemFromArray(subjects);
-    }
-
-    public static String getRandomHobbie() {
-        String[] hobbies = {"Sports", "Reading", "Music"};
-
-        return getRandomItemFromArray(hobbies);
-    }
-
-    public static String getRandomMonth() {
-        String[] months = {"January", "February", "March", "April",
-                "May", "June", "July", "August", "September", "November", "December"};
-
-        return getRandomItemFromArray(months);
-    }
-
-    public static int getRandomBirthYear() {
-        Random random = new Random();
-
-        int minYear = 1950;
-        int maxYear = LocalDate.now().getYear();
-        int birthYear = random.nextInt(maxYear - minYear + 1) + minYear;
-        return birthYear;
-    }
-
-    public static String getRandomState() {
-        String[] states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
-
-        return getRandomItemFromArray(states);
     }
 
     public static String getRandomCityByState(String state) {
@@ -95,18 +57,14 @@ public class RandomUtils {
         citiesByState.put("Haryana", new String[]{"Karnal", "Panipat"});
         citiesByState.put("Rajasthan", new String[]{"Jaiselmer", "Jaipur"});
 
-        Random random = new Random();
-        int index = random.nextInt(citiesByState.get(state).length);
-        return citiesByState.get(state)[index];
+        var citiesForThisState = citiesByState.get(state);
+        return faker.options().option(citiesForThisState);
     }
 
-    public static String getBirthDay() {
-        Date birthday = faker.date().birthday(14, 40);
-        String day = String.valueOf(birthday.getDate());
-        String month = String.valueOf(birthday.getMonth());
-        String year = String.valueOf(birthday.getYear());
+    public static LocalDate getBirthDay(int minAge, int maxAge) {
+        var birthDay = faker.date().birthday(minAge, maxAge);
 
-        return day;
+        return LocalDate.ofInstant(birthDay.toInstant(), ZoneId.systemDefault());
     }
 
 
