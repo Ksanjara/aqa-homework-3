@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
 
@@ -7,6 +8,8 @@ public class TextBoxTest extends TestBase {
 
     TextBoxPage textBoxPage = new TextBoxPage();
 
+    @Tag("Simple")
+    @Tag("Smoke")
     @Test
     void fillFormTest() {
         textBoxPage.openPage()

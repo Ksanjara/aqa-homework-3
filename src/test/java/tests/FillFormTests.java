@@ -1,10 +1,11 @@
 package tests;
 
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 public class FillFormTests extends TestBase {
 
+    @Tag("Smoke")
     @Test
     void fillFullFormTest() {
         registrationPage.openPage()
@@ -37,6 +38,7 @@ public class FillFormTests extends TestBase {
     }
 
 
+    @Tag("Simple")
     @Test
     void fillRequiredOnlyTest() {
         registrationPage.openPage()
@@ -54,7 +56,7 @@ public class FillFormTests extends TestBase {
                 .checkResult("Date of Birth", testData.birthdayDay.format(formatter));
     }
 
-    @Disabled
+    @Tag("Smoke")
     @Test
     void incorrectUserNumberTest() {
         registrationPage.openPage()
