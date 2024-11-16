@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
@@ -12,6 +13,7 @@ public class TextBoxTest extends TestBase {
 
     @Tag("Simple")
     @Tag("Smoke")
+    @DisplayName("Заполнение простой формы регистрации. Все поля")
     @Test
     void fillFormTest() {
         step("Открыть страницу с формой", () -> {

@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -8,6 +9,7 @@ import static io.qameta.allure.Allure.step;
 public class FillFormTests extends TestBase {
 
     @Tag("Smoke")
+    @DisplayName("Заполнение всех полей формы")
     @Test
     void fillFullFormTest() {
         step("Открыть страницу", () -> {
@@ -47,6 +49,7 @@ public class FillFormTests extends TestBase {
 
 
     @Tag("Simple")
+    @DisplayName("Заполнение только обязательных полей формы")
     @Test
     void fillRequiredOnlyTest() {
         step("Открыть страницу с формой", () -> {
@@ -72,6 +75,7 @@ public class FillFormTests extends TestBase {
     }
 
     @Tag("Smoke")
+    @DisplayName("Неправильный номер пользователя")
     @Test
     void incorrectUserNumberTest() {
         registrationPage.openPage()
