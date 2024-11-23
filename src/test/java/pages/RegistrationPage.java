@@ -51,7 +51,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setFirstName(String value) {
-        firstNameInput.setValue(value);
+        firstNameInput.scrollTo().setValue(value);
 
         return this;
     }
@@ -128,7 +128,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage submitForm() {
-        submitButton.click();
+        submitButton.scrollTo().click();
 
         return this;
     }
