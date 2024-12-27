@@ -17,21 +17,21 @@ public class FillFormTests extends TestBase {
         });
         step("Заполнить все поля формы", () -> {
             registrationPage.setFirstName(testData.firstName)
-                            .setLastName(testData.lastName)
-                            .setEmail(testData.userEmail)
-                            .setGender(testData.userGender)
-                            .setUserNumber(testData.userNumber)
-                            .setDateOfBirth(testData.birthdayDay)
-                            .setSubjects(testData.userSubject)
-                            .setInterest(testData.userInterest)
-                            .uploadPicture(testData.picturePath)
-                            .setAddress(testData.streetAddress)
-                            .setState(testData.userState)
-                            .setCity(testData.userCity);
-                });
+                    .setLastName(testData.lastName)
+                    .setEmail(testData.userEmail)
+                    .setGender(testData.userGender)
+                    .setUserNumber(testData.userNumber)
+                    .setDateOfBirth(testData.birthdayDay)
+                    .setSubjects(testData.userSubject)
+                    .setInterest(testData.userInterest)
+                    .uploadPicture(testData.picturePath)
+                    .setAddress(testData.streetAddress)
+                    .setState(testData.userState)
+                    .setCity(testData.userCity);
+        });
         step("Отправить форму", () -> {
-                    registrationPage.submitForm();
-                });
+            registrationPage.submitForm();
+        });
         step("Проверить отображение полей в таблице", () -> {
             registrationPage.checkResult("Student Name", testData.firstName + " " + testData.lastName)
                     .checkResult("Student Email", testData.userEmail)

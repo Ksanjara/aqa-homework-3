@@ -25,5 +25,9 @@ public class TestData {
     String picturePath = "Google_Test_passed.png";
     String userState = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
     String userCity = getRandomCityByState(userState);
+    String bookStoreLogin = "ksanjara";
+    String bookStorePassword = "Password1!";
+    String isbn = "9781449365035";
+    String bookName = "Speaking JavaScript";
 
 }

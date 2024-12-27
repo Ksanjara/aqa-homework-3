@@ -26,7 +26,7 @@ public class TextBoxTest extends TestBase {
                     .setPermanentAddress("My address is not house and is not street");
         });
         step("Отправить форму", () -> {
-                    textBoxPage.submitForm();
+            textBoxPage.submitForm();
         });
         step("Проверить отображение полей в таблице", () -> {
             textBoxPage.checkResult("Kseniia", "my@email.ru", "My address now this", "My address is not house and is not street");
