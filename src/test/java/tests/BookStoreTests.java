@@ -1,6 +1,5 @@
 package tests;
 
-
 import io.restassured.response.Response;
 import models.books.AddBookRequestBodyModel;
 import models.books.Isbn;
@@ -10,9 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static tests.ApiSteps.*;
-import static tests.WebSteps.*;
-
+import static api.ApiSteps.*;
 
 public class BookStoreTests extends TestBase {
     @Tag("Simple")
@@ -30,9 +27,9 @@ public class BookStoreTests extends TestBase {
         List<Isbn> listIsbns = List.of(isbn);
         AddBookRequestBodyModel bookData = new AddBookRequestBodyModel(userId, listIsbns);
         addBooks(token, bookData);
-        openUserBooksPage(userId, expires, token);
-        checkBookExistenceByName(testData.bookName);
-        deleteBookByName(testData.bookName);
-        checkBookAbsenceByName(testData.bookName);
+        profileBooksPage.openUserBooksPage(userId, expires, token);
+        profileBooksPage.findBookByName(testData.bookName);
+        profileBooksPage.deleteBookByName(testData.bookName);
+        profileBooksPage.findNotBookByName(testData.bookName);
     }
 }

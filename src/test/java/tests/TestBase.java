@@ -2,13 +2,16 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import data.TestData;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import io.restassured.RestAssured;
 import io.restassured.parsing.Parser;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import pages.ProfileBooksPage;
 import pages.RegistrationPage;
 
 import java.time.format.DateTimeFormatter;
@@ -21,6 +24,7 @@ public class TestBase {
     public DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM,yyyy", Locale.ENGLISH);
     TestData testData = new TestData();
     RegistrationPage registrationPage = new RegistrationPage();
+    ProfileBooksPage profileBooksPage = new ProfileBooksPage();
 
     @BeforeAll
     static void preconditionsForAllTests() {
@@ -42,7 +46,12 @@ public class TestBase {
         ));
         Configuration.browserCapabilities = capabilities;
 
+    }
+
+    @BeforeEach
+    void preconditionsForEachTest() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+
     }
 
     @AfterEach
