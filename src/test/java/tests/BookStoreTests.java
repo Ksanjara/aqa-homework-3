@@ -12,12 +12,13 @@ import java.util.List;
 import static api.ApiSteps.*;
 
 public class BookStoreTests extends TestBase {
+
     @Tag("Simple")
     @Tag("Smoke")
     @DisplayName("Удаление книги из списка")
     @Test
     void deleteBookFromList() {
-        Response responseLogin = login(testData.bookStoreLogin, testData.bookStorePassword);
+        Response responseLogin = login(authConfig.bookStoreLogin(), authConfig.bookStorePassword());
         String token = responseLogin.path("token");
         String userId = responseLogin.path("userId");
         String expires = responseLogin.path("expires");
