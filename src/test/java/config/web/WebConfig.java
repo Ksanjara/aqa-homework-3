@@ -9,7 +9,7 @@ import org.aeonbits.owner.Config;
 })
 public interface WebConfig extends Config {
     @Key("browser")
-    Browser browser();
+    String browser();
 
     @Key("browserVersion")
     String browserVersion();

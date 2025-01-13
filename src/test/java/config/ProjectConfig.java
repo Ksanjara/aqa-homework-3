@@ -7,6 +7,8 @@ import io.restassured.RestAssured;
 import io.restassured.parsing.Parser;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.util.Map;
+
 public class ProjectConfig {
     private final WebConfig webConfig;
     private final AuthConfig authConfig;
@@ -29,10 +31,12 @@ public class ProjectConfig {
         Configuration.browserSize = webConfig.browserSize();
         Configuration.pageLoadStrategy = webConfig.pageLoadStrategy();
         if (webConfig.isRemote()) {
-            Configuration.remote = webConfig.remoteUrl();
+            Configuration.remote = webConfig.remoteUrl().toString();
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("enableVNC", true);
-            capabilities.setCapability("enableVideo", true);
+            capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                    "enableVNC", true,
+                    "enableVideo", true
+            ));
             Configuration.browserCapabilities = capabilities;
         }
     }
